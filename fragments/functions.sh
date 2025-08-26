@@ -27,8 +27,12 @@ cleanupAndExit() { # $1 = exit code, $2 message, $3 level
 
     # if label is wrong and we wanted name of the label, then return ##################
     if [[ $RETURN_LABEL_NAME -eq 1 ]]; then
-        1=0 # If only label name should be returned we exit without any errors
-        echo "#"
+		if [[ $1 -ne 0 ]]; then
+			1=0 # If only label name should be returned we exit without any errors
+			echo "#"
+		else
+			echo "$name"
+		fi
     fi
     exit "$1"
 }

@@ -14,28 +14,21 @@ done
 
 # verify we have everything we need
 if [[ -z $name ]]; then
-    printlog "need to provide 'name'" ERROR
-    exit 1
+    cleanupAndExit 1 "need to provide 'name'" ERROR
 fi
 if [[ -z $type ]]; then
-    printlog "need to provide 'type'" ERROR
-    exit 1
+    cleanupAndExit 1 "need to provide 'type'" ERROR
 fi
 if [[ -z $downloadURL ]]; then
-    printlog "need to provide 'downloadURL'" ERROR
-    exit 1
+    cleanupAndExit 1 "need to provide 'downloadURL'" ERROR
 fi
 if [[ -z $expectedTeamID ]]; then
-    printlog "need to provide 'expectedTeamID'" ERROR
-    exit 1
+    cleanupAndExit 1 "need to provide 'expectedTeamID'" ERROR
 fi
 
 # Are we only asked to return label name
 if [[ $RETURN_LABEL_NAME -eq 1 ]]; then
-    printlog "Only returning label name." REQ
-    printlog "$name"
-    echo "$name"
-    exit
+    cleanupAndExit 0 "Only returning label name." REQ
 fi
 
 # MARK: application download and installation starts here
